@@ -34,6 +34,6 @@ mergeData <- select(mergeData,SubjectID,Activity,4:ncol(mergeData),-V1)
 mergeData %>% 
         group_by(SubjectID,Activity) %>%
         summarise_each(funs(mean),3:ncol(mergeData)) %>% 
-        write.csv(file="mean_table.csv")
-mean_table<- read.csv("mean_table.csv")
+        write.table(file="mean_table.csv",row.names=FALSE)
+mean_table<- read.table("mean_table.csv",header=FALSE)
 head(mean_table,n=10)
